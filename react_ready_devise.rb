@@ -177,4 +177,15 @@ after_bundle do
   git :init
   git add: "."
   git commit: "-m 'Initial commit with devise template from https://github.com/lewagon/rails-templates'"
+
+  # Create react frontend
+  run "mkdir app/javascript/components"
+  run "echo 'import "./components"' >> app/javascript/application.js"
+  run "curl -L https://github.com/yannklein/rails-templates/raw/react-ready-devise/react-components/Home.jsx > app/javascript/components/Home.jsx"
+  run "mkdir app/javascript/routes"
+  run "curl -L https://github.com/yannklein/rails-templates/raw/react-ready-devise/react-components/index.jsx > app/javascript/routes/index.jsx"
+  run "curl -L https://github.com/yannklein/rails-templates/raw/react-ready-devise/react-components/App.jsx > app/javascript/components/App.jsx"
+  run "curl -L https://github.com/yannklein/rails-templates/raw/react-ready-devise/react-components/components_index.jsx > app/javascript/components/index.jsx"
 end
+
+
