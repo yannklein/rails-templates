@@ -6,7 +6,6 @@ inject_into_file "Gemfile", before: "group :development, :test do" do
   <<~RUBY
     gem "devise"
     gem "autoprefixer-rails"
-    gem "font-awesome-sass", "~> 6.1"
     gem "simple_form", github: "heartcombo/simple_form"
     gem "sassc-rails"
 
@@ -21,7 +20,7 @@ end
 ########################################
 run "rm -rf app/assets/stylesheets"
 run "rm -rf vendor"
-run "curl -L https://github.com/lewagon/rails-stylesheets/archive/master.zip > stylesheets.zip"
+run "curl -L /react-rails-stylesheets-master.zip.zip > stylesheets.zip"
 run "unzip stylesheets.zip -d app/assets && rm -f stylesheets.zip && rm -f app/assets/rails-stylesheets-master/README.md"
 run "mv app/assets/rails-stylesheets-master app/assets/stylesheets"
 
@@ -86,9 +85,8 @@ environment generators
 ########################################
 after_bundle do
   # Install JS packages 
-  run "npm upgrade"
-  run "npm install -g nodemon"
-  run "yarn add postcss bootstrap bootstrap-icons react react-dom react-router-dom sass"
+  run "yarn add nodemon postcss postcss-cli autoprefixer bootstrap bootstrap-icons react react-dom react-router-dom sass @popperjs/core"
+  rails_command "javascript:install:esbuild"
 
   # Generators: db + simple form + pages controller
   ########################################
