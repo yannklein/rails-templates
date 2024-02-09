@@ -25,34 +25,6 @@ gsub_file(
   '<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">'
 )
 
-# Flashes
-########################################
-file "app/views/shared/_flashes.html.erb", <<~HTML
-  <% if notice %>
-    <div class="alert alert-info alert-dismissible fade show m-1" role="alert">
-      <%= notice %>
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-      </button>
-    </div>
-  <% end %>
-  <% if alert %>
-    <div class="alert alert-warning alert-dismissible fade show m-1" role="alert">
-      <%= alert %>
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-      </button>
-    </div>
-  <% end %>
-HTML
-
-run "curl -L https://raw.githubusercontent.com/lewagon/awesome-navbars/master/templates/_navbar_wagon.html.erb > app/views/shared/_navbar.html.erb"
-
-inject_into_file "app/views/layouts/application.html.erb", after: "<body>" do
-  <<~HTML
-    <%= render "shared/navbar" %>
-    <%= render "shared/flashes" %>
-  HTML
-end
-
 # README
 ########################################
 markdown_file_content = <<~MARKDOWN
@@ -174,7 +146,7 @@ after_bundle do
 
   # Create react frontend
   run "mkdir app/javascript/components"
-  run "echo 'import "./components"' >> app/javascript/application.js"
+  run "echo 'import \"./components\"' >> app/javascript/application.js"
   run "curl -L https://github.com/yannklein/rails-templates/raw/react-ready-devise/react-components/Home.jsx > app/javascript/components/Home.jsx"
   run "mkdir app/javascript/routes"
   run "curl -L https://github.com/yannklein/rails-templates/raw/react-ready-devise/react-components/index.jsx > app/javascript/routes/index.jsx"
