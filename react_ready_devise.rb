@@ -20,7 +20,7 @@ end
 ########################################
 run "rm -rf app/assets/stylesheets"
 run "rm -rf vendor"
-run "curl -L /react-rails-stylesheets-master.zip.zip > stylesheets.zip"
+run "curl -L https://github.com/yannklein/rails-templates/raw/react-ready-devise/react-rails-stylesheets-master.zip > stylesheets.zip"
 run "unzip stylesheets.zip -d app/assets && rm -f stylesheets.zip && rm -f app/assets/rails-stylesheets-master/README.md"
 run "mv app/assets/rails-stylesheets-master app/assets/stylesheets"
 
