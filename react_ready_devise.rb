@@ -85,7 +85,7 @@ environment generators
 ########################################
 after_bundle do
   # Install JS packages 
-  run "yarn add nodemon postcss postcss-cli^8.0.0 autoprefixer bootstrap bootstrap-icons react react-dom react-router-dom sass @popperjs/core"
+  run "yarn add nodemon postcss postcss-cli@8.0.0 autoprefixer bootstrap bootstrap-icons react react-dom react-router-dom sass @popperjs/core"
   rails_command "javascript:install:esbuild"
 
   # Generators: db + simple form + pages controller
