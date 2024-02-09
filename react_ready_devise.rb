@@ -57,7 +57,6 @@ after_bundle do
   rails_command "db:drop db:create db:migrate"
   generate("simple_form:install", "--bootstrap")
   generate(:controller, "pages", "--skip-routes", "--no-test-framework")
-  run "mkdir app/views/pages"
   run "touch app/views/pages/home.html.erb"
 
   # Routes
