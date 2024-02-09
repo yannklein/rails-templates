@@ -172,12 +172,6 @@ after_bundle do
   ########################################
   run "curl -L https://raw.githubusercontent.com/lewagon/rails-templates/master/.rubocop.yml > .rubocop.yml"
 
-  # Git
-  ########################################
-  git :init
-  git add: "."
-  git commit: "-m 'Initial commit with devise template from https://github.com/lewagon/rails-templates'"
-
   # Create react frontend
   run "mkdir app/javascript/components"
   run "echo 'import "./components"' >> app/javascript/application.js"
@@ -186,6 +180,13 @@ after_bundle do
   run "curl -L https://github.com/yannklein/rails-templates/raw/react-ready-devise/react-components/index.jsx > app/javascript/routes/index.jsx"
   run "curl -L https://github.com/yannklein/rails-templates/raw/react-ready-devise/react-components/App.jsx > app/javascript/components/App.jsx"
   run "curl -L https://github.com/yannklein/rails-templates/raw/react-ready-devise/react-components/components_index.jsx > app/javascript/components/index.jsx"
+  
+  # Git
+  ########################################
+  git :init
+  git add: "."
+  git commit: "-m 'Initial commit with devise template from https://github.com/lewagon/rails-templates'"
+
 end
 
 
