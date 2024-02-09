@@ -16,14 +16,6 @@ inject_into_file "Gemfile", after: "group :development, :test do" do
   "\n  gem \"dotenv-rails\""
 end
 
-# Assets
-########################################
-run "rm -rf app/assets/stylesheets"
-run "rm -rf vendor"
-run "curl -L https://github.com/yannklein/rails-templates/raw/react-ready-devise/master.zip > stylesheets.zip"
-run "unzip stylesheets.zip -d app/assets && rm -f stylesheets.zip && rm -f app/assets/react-rails-stylesheets-master/README.md"
-run "mv app/assets/react-rails-stylesheets-master app/assets/stylesheets"
-
 # Layout
 ########################################
 
@@ -160,9 +152,13 @@ after_bundle do
     Rails.application.config.assets.precompile += %w(bootstrap.min.js popper.js)
   RUBY
 
-  append_file "app/assets/config/manifest.js", <<~JS
-    //= link_directory ../stylesheets .css
-  JS
+  # Assets
+  ########################################
+  run "rm -rf app/assets/stylesheets"
+  run "rm -rf vendor"
+  run "curl -L https://github.com/yannklein/rails-templates/raw/react-ready-devise/master.zip > stylesheets.zip"
+  run "unzip stylesheets.zip -d app/assets && rm -f stylesheets.zip && rm -f app/assets/react-rails-stylesheets-master/README.md"
+  run "mv app/assets/react-rails-stylesheets-master app/assets/stylesheets"
 
   # Heroku
   ########################################
