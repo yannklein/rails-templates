@@ -34,6 +34,6 @@ Same as minimal **plus** a Devise install with a generated `User` model.
 ```bash
 rails new \
   -d postgresql -j esbuild -c bootstrap \
-  -m https://raw.githubusercontent.com/lewagon/rails-templates/master/react_ready_devise.rb \
+  -m https://raw.githubusercontent.com/yannklein/rails-templates/react-ready-devise/react_ready_devise.rb \
   CHANGE_THIS_TO_YOUR_RAILS_APP_NAME
 ```
