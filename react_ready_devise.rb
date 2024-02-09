@@ -4,7 +4,6 @@ run "if uname | grep -q 'Darwin'; then pgrep spring | xargs kill -9; fi"
 ########################################
 inject_into_file "Gemfile", before: "group :development, :test do" do
   <<~RUBY
-    gem "bootstrap", "~> 5.2"
     gem "devise"
     gem "autoprefixer-rails"
     gem "font-awesome-sass", "~> 6.1"
@@ -86,6 +85,11 @@ environment generators
 # After bundle
 ########################################
 after_bundle do
+  # Install JS packages 
+  run "npm upgrade"
+  run "npm install -g nodemon"
+  run "yarn add postcss bootstrap bootstrap-icons react react-dom react-router-dom sass"
+
   # Generators: db + simple form + pages controller
   ########################################
   rails_command "db:drop db:create db:migrate"
@@ -158,14 +162,8 @@ after_bundle do
     Rails.application.config.assets.precompile += %w(bootstrap.min.js popper.js)
   RUBY
 
-  append_file "app/javascript/application.js", <<~JS
-    import "@popperjs/core"
-    import "bootstrap"
-  JS
-
   append_file "app/assets/config/manifest.js", <<~JS
-    //= link popper.js
-    //= link bootstrap.min.js
+    //= link_directory ../stylesheets .css
   JS
 
   # Heroku
