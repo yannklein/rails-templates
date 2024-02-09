@@ -26,3 +26,14 @@ rails new \
   -m https://raw.githubusercontent.com/lewagon/rails-templates/master/devise.rb \
   CHANGE_THIS_TO_YOUR_RAILS_APP_NAME
 ```
+
+## React ready Devise
+
+Same as minimal **plus** a Devise install with a generated `User` model.
+
+```bash
+rails new \
+  -d postgresql -j esbuild -c bootstrap \
+  -m https://raw.githubusercontent.com/lewagon/rails-templates/master/react_ready_devise.rb \
+  CHANGE_THIS_TO_YOUR_RAILS_APP_NAME
+```
